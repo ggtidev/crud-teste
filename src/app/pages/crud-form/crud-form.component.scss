@@ -1,0 +1,76 @@
+.main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-width {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.section-title {
+    align-self: flex-start;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+}
+
+.grid-um {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-row: 1fr;
+    column-gap: 8px;
+}
+
+.span8 {
+    grid-column: span 8;
+}
+.span4 {
+    grid-column: span 4;
+}
+
+.div-column-gap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 8px;
+}
+.days-checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.required {
+    color: red;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding-top: 30px;
+    max-width: 1000px;
+}
+
+@media (max-width: 540px) {
+   .span8, .span4 {
+    grid-column: span 12;
+   }
+
+   .days-checkbox-group {
+    grid-template-columns: repeat(1, 1fr);
+   }
+}
