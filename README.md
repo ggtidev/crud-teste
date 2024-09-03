@@ -1,27 +1,29 @@
-# CrudTeste
+Processo Seletivo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+Descrição
+Bem-vindo ao repositório do projeto CRUD de profissionais de saúde. Este projeto tem como objetivo proporcionar uma experiência prática na construção de um sistema básico de CRUD utilizando Angular e Angular Material. A ideia é que você possa integrar este CRUD com uma API que você mesmo criará, utilizando serviços e requisições HTTP. Além disso, o projeto fornecerá uma oportunidade para demonstrar suas habilidades em validações de formulários.
 
-## Development server
+Como Executar o Projeto
+Clone este repositório em seu ambiente local.
+Instale as dependências utilizando o comando npm install. Execute o projeto com ng serve. Acesse a aplicação através do navegador no endereço http://localhost:4200.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Funcionalidade principal
 
-## Code scaffolding
+C.R.U.D. de Profissionais de Saúde
+A aplicação deve permitir a execução de operações CRUD (Criar, Ler, Atualizar, Excluir) em registros de clínicas.
+Utilizando o sistema, é possível facilmente adicionar novas clínicas, visualizar informações detalhadas, atualizar dados existentes e remover registros e efetuar login e cadastros de usuários.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O que esperamos
 
-## Build
+Integração do projeto com Backend (efetuar processamentos que reflitam em um banco de dados a sua escolha);
+Possibilidade de editar / excluir / criar e listar clínicas;
+Integração com um banco de dados a sua escolha;
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Conclusão
+Procuramos alguém acima de tudo, capaz de solucionar problemas da forma mais criativa possível. Trazendo muita dinamicidade para o desenvolvimento.
 
-## Running unit tests
+Então, aproveite cada linha de código, celebre suas conquistas e não hesite em experimentar algo novo para deixar o processo ainda mais interessante.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+E, claro, se divirta muito! Afinal, o aprendizado é uma jornada empolgante e, quem sabe, até mesmo um pouco divertida.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Te aguardamos na próxima etapa, Boa sorte 🚀😊
