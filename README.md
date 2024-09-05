@@ -40,7 +40,9 @@ Este projeto é um backend desenvolvido em Laravel. Aqui estão as instruções 
 ## Certifique-se de que seu ambiente possui os seguintes requisitos instalados:
 
 Docker >= 26.0.0
+
 Docker compose >= 1.29.2
+
 Node >= 20.10.0
 
 # Passos para Configuração
@@ -50,14 +52,19 @@ git clone https://github.com/Iago-Bruno/crud-teste.git
 # Backend
 
 cd crud-teste
+
 cd crud-teste-api
+
 sudo docker-compose up -d --build
 
 ## Acessar bash do container crud-teste-api
 
 composer install
+
 php artisan key:generate
+
 php artisan migrate
+
 php artisan db:seed
 
 ## Disponivel no endereço 'http://localhost:8004'
@@ -67,6 +74,7 @@ php artisan db:seed
 ## Acessar pasta raíz do projeto e instalar dependências
 
 cd crud-teste
+
 npm install
 
 # Executar aplicação
