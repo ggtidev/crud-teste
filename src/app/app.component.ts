@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./shared/header/header.component";
+import { HeaderComponent } from './shared/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,6 @@ import { HeaderComponent } from "./shared/header/header.component";
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: []
+  styles: [],
 })
-export class AppComponent {
-}
+export class AppComponent {}

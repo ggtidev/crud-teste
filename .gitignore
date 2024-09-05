@@ -40,3 +40,24 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Backend files
+/crud-teste-api/.phpunit.cache
+/crud-teste-api/node_modules
+/crud-teste-api/public/build
+/crud-teste-api/public/hot
+/crud-teste-api/public/storage
+/crud-teste-api/storage/*.key
+/crud-teste-api/vendor
+/crud-teste-api/.env.backup
+/crud-teste-api/.env.production
+/crud-teste-api/.phpunit.result.cache
+/crud-teste-api/Homestead.json
+/crud-teste-api/Homestead.yaml
+/crud-teste-api/auth.json
+/crud-teste-api/npm-debug.log
+/crud-teste-api/yarn-error.log
+/crud-teste-api/.fleet
+/crud-teste-api/.idea
+/crud-teste-api/.vscode
+/crud-teste-api/postgres-data

@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+    app:
+        build:
+            args:
+                user: admin
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: crud-teste-api:1.0
+        container_name: crud-teste-app
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        environment:
+            PHP_MEMORY_LIMIT: 500M
+        networks:
+            - default
+
+    nginx-server:
+        image: nginx:alpine
+        container_name: crud-teste-nginx
+        ports:
+            - 8004:80
+        volumes:
+            - ./:/var/www
+            - ./deploy/nginx:/etc/nginx/conf.d/
+        networks:
+            - default
+
+    db:
+        image: postgres:latest
+        container_name: crud-teste-db
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: database
+        ports:
+            - 6543:5432
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+        networks:
+            - default
+
+networks:
+    default:
+        external:
+            name: crud-net
