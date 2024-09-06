@@ -7,23 +7,23 @@
             <div class="grid-um">
                 <mat-form-field appearance="outline" class="span8">
                     <mat-label>Nome<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input type="text" matInput placeholder="Insira seu nome completo">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Especialidade<span class="required">*</span></mat-label>
                     <mat-select>
                         @for (specialty of specialties; track specialty.especialidade) {
-                            <mat-option >
+                            <mat-option value="{{ specialty.especialidade }}">
                                 {{ specialty.especialidade }} 
                             </mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
     
-                <mat-form-field appearance="outline" class="span4">
+                <mat-form-field appearance="outline" class="span4" type="text">
                     <mat-label>CRM<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input type="text" matInput placeholder="Ex: CMR/PE123456" >
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
@@ -34,47 +34,47 @@
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Email<span class="required">*</span></mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
+                    <input type="email" matInput placeholder="Ex: pat@example.com">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Data da Contratação</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input  matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Início do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput placeholder="HH:mm" type="time">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Fim do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput placeholder="HH:mm" type="time">
                 </mat-form-field>
             </div>
-    
-            <div>
+
+            <div class="organize">
                 <label for="status">Status</label>
-                <div>
-                    <mat-radio-group aria-label="Selecione uma opção">
+                    <mat-radio-group aria-label="Selecione uma opção" class="checkbox-group">
                         <mat-radio-button value="true">Ativo(a)</mat-radio-button>
                         <mat-radio-button value="false">Inativo(a)</mat-radio-button>
                     </mat-radio-group> 
-                </div>
             </div>
-    
+          <div class="organize">
+            <label for="daysOfWeek">Dias de Atendimento</label>
             <div class="div-column-gap">
-                <label for="daysOfWeek">Dias de Atendimento</label>
-                <div class="days-checkbox-group">
+                <div class="checkbox-group">
                         @for (day of daysOfWeek; track day.name) {
-                            <mat-checkbox>
+                            <mat-checkbox value="{{day.name}}">
                                 {{ day.name }}
                             </mat-checkbox>
                         } 
                 </div>
             </div>
+          </div>
+
         </div>
         <section class="footer-buttons">
             <div> 

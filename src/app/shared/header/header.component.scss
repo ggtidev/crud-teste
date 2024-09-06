@@ -1,3 +1,51 @@
 .logo-title {
     padding: 0 14px;
 }
+.logo:hover{
+  color: rgb(200, 122, 245);
+}
+
+.style{
+    text-align: center;
+    min-height: 6000px; ;
+}
+.standard-button {
+    
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 200px; 
+    height: 50px; 
+    text-align: center; 
+    padding: 0; 
+    box-sizing: border-box;
+    border: none; 
+    border-left: 3px solid #803fb5; 
+    border-radius: 0; 
+ 
+}
+
+.mat-icon:hover{
+  column-rule: #803fb5;
+}
+  .standard-button mat-icon {
+    margin-right: 8px; 
+  }
+  
+  .standard-button span {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-list-item {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 8px; 
+  
+}
+  
+  mat-list-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  

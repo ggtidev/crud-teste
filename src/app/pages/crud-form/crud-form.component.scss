@@ -48,11 +48,15 @@
     gap: 8px;
     padding-top: 8px;
 }
-.days-checkbox-group {
+.checkbox-group {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-items: left;
+    padding: 1rem;
 }
-
+.organize{
+    align-items:left;
+}
 .required {
     color: red;
 }

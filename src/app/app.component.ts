@@ -8,11 +8,12 @@ import { HeaderComponent } from "./shared/header/header.component";
   imports: [RouterOutlet, HeaderComponent],
   template: `
     <app-header></app-header>
-    <div class="bg">
-      <router-outlet></router-outlet>
-    </div>
+  
   `,
   styles: []
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
 }

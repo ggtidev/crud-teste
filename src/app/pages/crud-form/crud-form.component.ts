@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -9,6 +9,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crud-form',
@@ -23,20 +25,55 @@ import { RouterLink } from '@angular/router';
     MatRadioModule, 
     MatCheckboxModule, 
     MatIconModule, 
-    MatButtonModule
+    MatButtonModule,
+    CommonModule,
   ],
   templateUrl: './crud-form.component.html',
   styleUrl: './crud-form.component.scss'
 })
-export class CrudFormComponent {
-   daysOfWeek = [
-    { name: 'Segunda-feira' },
-    { name: 'Terça-feira' },
-    { name: 'Quarta-feira' },
-    { name: 'Quinta-feira' },
-    { name: 'Sexta-feira' },
-    { name: 'Sábado' },
-    { name: 'Domingo' },
+export class CrudFormComponent implements OnInit {
+
+  form: FormGroup;
+  isFormSubmitted: boolean = false;
+
+  constructor(private formBuilder: FormBuilder){
+
+    this.form = this.formBuilder.group({
+      name: [null,[Validators.required]],
+      crm:  [null,[Validators.required]],
+      specialty: [null,[Validators.required]],
+      phone: [null],
+      email:[null,[Validators.required, Validators.email]],
+      contract_date:[null],
+      start_service:[null],
+      end_service:[null],
+      status:[null,[Validators.required]],
+      day_service:this.formBuilder.array([]),
+    });   
+  }
+
+  ngOnInit() {
+    const currentTime = new Date().toTimeString().substring(0, 5);
+    this.form.patchValue({
+      startService: currentTime
+    });
+  }
+  onSubmit(): void {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+  }
+
+
+  
+  daysOfWeek = [
+    { name: 'SEG' },
+    { name: 'TER' },
+    { name: 'QUA' },
+    { name: 'QUI' },
+    { name: 'SEX' },
+    { name: 'SAB' },
+    { name: 'DOM' },
   ];
 
   specialties = [
