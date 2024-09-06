@@ -6,6 +6,10 @@
             </section>
             <div class="table-container">
                 <table mat-table [dataSource]="dataSource" >
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                      </ng-container>
                     <ng-container matColumnDef="name">
                       <th mat-header-cell *matHeaderCellDef> Nome </th>
                       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -34,9 +38,9 @@
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let element">
-                        <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below">
-                            <mat-icon>visibility</mat-icon>
-                        </button>
+                            <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below" (click)="openDialog()">
+                                <mat-icon>visibility</mat-icon>
+                              </button>
                         <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below">
                             <mat-icon>edit</mat-icon>
                         </button>

@@ -1,4 +1,39 @@
 <mat-toolbar color="primary">
-    <mat-icon aria-hidden="false" aria-label="Logo">filter_vintage</mat-icon>
+
+    <mat-icon aria-hidden="false" aria-label="Logo" class="logo" (click)="drawer.toggle()">sort</mat-icon>
     <span class="logo-title">CuidaSaúde</span>
+  
 </mat-toolbar>
+
+<mat-drawer-container autosize>
+
+    <mat-drawer #drawer opened="true" mode="over">
+
+        <mat-nav-list>
+
+          <mat-list-item>
+            <button mat-button class="standard-button"  routerLink="crud-list" routerLinkActive="active">
+              <mat-icon>group</mat-icon>
+              <span>Profissionais</span>
+            </button>
+          </mat-list-item>
+
+          <mat-list-item>
+            <button mat-button class="standard-button" routerLink="crud-form" routerLinkActive="active">
+              <mat-icon>person_add</mat-icon>
+              <span>Cadastrar</span>
+            </button>
+          </mat-list-item>
+
+        </mat-nav-list>
+
+      </mat-drawer>
+    <mat-drawer-content>
+
+        <div class="style">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>

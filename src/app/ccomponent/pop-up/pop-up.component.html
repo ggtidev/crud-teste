@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Perfil do Usuário</h2>
+<form>
+  <div mat-dialog-content class="user-profile-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput [value]="data.name" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Especialidade</mat-label>
+      <input matInput [value]="data.specialty" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>CRM</mat-label>
+      <input matInput [value]="data.crm" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contato</mat-label>
+      <input matInput [value]="data.phone" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Status</mat-label>
+      <input matInput [value]="data.status ? 'Ativo' : 'Inativo'" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [value]="data.email" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Início do Atendimento</mat-label>
+      <input type='time' matInput [value]="data.start_service" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fim do Atendimento</mat-label>
+      <input matInput [value]="data.end_service" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Dias de Trabalho</mat-label>
+      <input matInput [value]="data.day_service" readonly>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions class="user-profile-actions">
+    <button mat-button (click)="onNoClick()">Fechar</button>
+  </div>
+</form>
