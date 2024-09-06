@@ -1,94 +1,135 @@
 <div class="main">
-    <div class="main-width">
-        <div class="card">
-            <section class="section-title">
-                <h3>Cadastrar Profissional</h3>
-            </section>
-            <div class="grid-um">
-                <mat-form-field appearance="outline" class="span8">
-                    <mat-label>Nome<span class="required">*</span></mat-label>
-                    <input matInput>
-                </mat-form-field>
-                
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Especialidade<span class="required">*</span></mat-label>
-                    <mat-select>
-                        @for (specialty of specialties; track specialty.especialidade) {
-                            <mat-option >
-                                {{ specialty.especialidade }} 
-                            </mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>CRM<span class="required">*</span></mat-label>
-                    <input matInput>
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Contato</mat-label>
-                    <span matPrefix>+55 &nbsp;</span>
-                    <input type="tel" matInput placeholder="0 0000-0000">
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Email<span class="required">*</span></mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Data da Contratação</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                  
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Início do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline" class="span4">
-                    <mat-label>Fim do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
-                </mat-form-field>
-            </div>
-    
-            <div>
-                <label for="status">Status</label>
-                <div>
-                    <mat-radio-group aria-label="Selecione uma opção">
-                        <mat-radio-button value="true">Ativo(a)</mat-radio-button>
-                        <mat-radio-button value="false">Inativo(a)</mat-radio-button>
-                    </mat-radio-group> 
-                </div>
-            </div>
-    
-            <div class="div-column-gap">
-                <label for="daysOfWeek">Dias de Atendimento</label>
-                <div class="days-checkbox-group">
-                        @for (day of daysOfWeek; track day.name) {
-                            <mat-checkbox>
-                                {{ day.name }}
-                            </mat-checkbox>
-                        } 
-                </div>
-            </div>
+  <div class="main-width">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="card">
+        <section class="section-title">
+          <h3>Cadastrar Profissional</h3>
+        </section>
+        <div class="grid-um">
+          <mat-form-field appearance="outline" class="span8">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Especialidade</mat-label>
+            <mat-select formControlName="expertise_id">
+              @for (expertise of expertises; track expertise) {
+              <mat-option [value]="expertise.id">
+                {{ expertise.name }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>CRM</mat-label>
+            <input matInput formControlName="crm" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Contato</mat-label>
+            <span matPrefix>+55 &nbsp;</span>
+            <input
+              type="tel"
+              matInput
+              placeholder="(00) 0 0000-0000"
+              formControlName="phone_number"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Ex. pat@example.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Data da Contratação</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="hiring_date"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Início do Atendimento</mat-label>
+            <input
+              matInput
+              placeholder="HH:mm"
+              type="text"
+              formControlName="start_service"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Fim do Atendimento</mat-label>
+            <input
+              matInput
+              placeholder="HH:mm"
+              type="text"
+              formControlName="end_service"
+            />
+          </mat-form-field>
         </div>
-        <section class="footer-buttons">
-            <div> 
-                <button mat-fab extended color="tertiary" [routerLink]="['/crud-list']">
-                    <mat-icon>keyboard_arrow_left</mat-icon>
-                    Voltar
-                </button>
-            </div>
-            <div> 
-                <button mat-fab extended color="primary">
-                    <mat-icon>check</mat-icon>
-                    Salvar Cadastro
-                </button>
-            </div>
-    </section>
-    </div>
+
+        <div>
+          <label for="status">Status</label>
+          <div>
+            <mat-radio-group
+              aria-label="Selecione uma opção"
+              formControlName="status"
+            >
+              <mat-radio-button [value]="true">Ativo(a)</mat-radio-button>
+              <mat-radio-button [value]="false">Inativo(a)</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="div-column-gap">
+          <mat-form-field appearance="outline" class="span4">
+            <mat-label>Dias de Atendimento</mat-label>
+            <mat-select formControlName="working_days" multiple="">
+              @for (day of daysOfWeek; track day) {
+              <mat-option [value]="day.id">
+                {{ day.day }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <section class="footer-buttons">
+        <div>
+          <button
+            mat-fab
+            extended
+            color="tertiary"
+            [routerLink]="['/crud-list']"
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            Voltar
+          </button>
+        </div>
+        @if (routeType !== 'show') {
+        <div>
+          <button mat-fab extended color="primary">
+            <mat-icon>check</mat-icon>
+            Salvar Cadastro
+          </button>
+        </div>
+        }
+      </section>
+    </form>
+  </div>
 </div>
