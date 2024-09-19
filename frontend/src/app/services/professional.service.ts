@@ -23,8 +23,4 @@ export class ProfessionalService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   };
 
-  createProfessional(professional: Professional): Observable<Professional> {
-    console.log('Requisição de criação de profissional')
-    return this.http.post<Professional>(this.apiUrl, professional);
-  }
 }
