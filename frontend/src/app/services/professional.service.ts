@@ -17,5 +17,14 @@ export class ProfessionalService {
     return this.http.get<Professional[]>(this.apiUrl);
   }
 
+  //void pq nao retorna o objeto dps q é deletado
+  deleteProfessional(id: string): Observable<void> {
+    //console.log('requisição de exclusão para:', id);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  };
 
+  createProfessional(professional: Professional): Observable<Professional> {
+    console.log('Requisição de criação de profissional')
+    return this.http.post<Professional>(this.apiUrl, professional);
+  }
 }

@@ -1,6 +1,6 @@
 //necessário ser igual ao backend
 export interface Professional {
-    id?: string;
+    _id?: string;
     name: string;
     specialty: string;
     crm: string;

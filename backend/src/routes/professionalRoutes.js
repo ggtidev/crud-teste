@@ -5,14 +5,14 @@ module.exports = router => {
     router.get('/api/profissionais', professionalController.listProfessionals);
 
     //Visualizar o profissional detalhadamente
-    router.get('/api/profissional/:id', professionalController.professionalDetails);
+    router.get('/api/profissionais/:id', professionalController.professionalDetails);
 
     //Cadastrar profissional
-    router.post('/api/cadastrar', professionalController.createProfessional);
+    router.post('/api/profissionais', professionalController.createProfessional);
 
     //Atualizar perfil do profissional
-    router.put('/api/profissional/:id', professionalController.updateProfessional)
+    router.put('/api/profissionais/:id', professionalController.updateProfessional)
 
     //Deletar perfil do profissional
-    router.delete('/api/profissional/:id', professionalController.deleteProfessional)
+    router.delete('/api/profissionais/:id', professionalController.deleteProfessional)
 }

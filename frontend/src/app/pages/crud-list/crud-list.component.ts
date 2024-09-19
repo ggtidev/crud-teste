@@ -46,4 +46,19 @@ export class CrudListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  onDelete(professional: Professional): void {
+    if (professional._id) { // verifica o id
+      if (confirm('Tem certeza que deseja excluir este profissional?')) {
+        this.professionalService.deleteProfessional(professional._id).subscribe({
+          next: () => {
+            this.loadProfessionals(); // atualiza a lista após exclusão
+          },
+          error: (err) => {
+            console.error('Erro ao excluir profissional:', err);
+          }
+        });
+      }
+    }
+  } 
+
 };
