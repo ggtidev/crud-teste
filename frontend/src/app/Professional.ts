@@ -6,7 +6,7 @@ export interface Professional {
     crm: string;
     phone?: string;
     email: string;
-    status?: boolean;
+    status: boolean;
     hiringDate?: Date;
     consultationTimes?: {
       initial?: string;
