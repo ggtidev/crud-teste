@@ -9,7 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfessionalService } from '../../services/professional.service';
@@ -36,6 +36,8 @@ import { ProfessionalService } from '../../services/professional.service';
 })
 export class CrudFormComponent implements OnInit {
   form: FormGroup; 
+  isEditMode = false;
+  professionalId?: string;
 
    daysOfWeek = [
     { name: 'Segunda-feira' },
@@ -62,7 +64,8 @@ export class CrudFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private professionalService: ProfessionalService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -78,7 +81,15 @@ export class CrudFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.professionalId = this.route.snapshot.paramMap.get('id')  || undefined;
+    if (this.professionalId) {
+        this.isEditMode = true;
+        this.professionalService.getProfessionalDetails(this.professionalId).subscribe(data => {
+            this.form.patchValue(data); // reescreve os dados do profissional
+        });
+    }
+}
 
   //metodo para transformar em array reconhecido pelo angular
   get daysOfWeekArray() {
@@ -94,10 +105,17 @@ export class CrudFormComponent implements OnInit {
           .filter((v: string | null) => v !== null)
       };
       
-      this.professionalService.createProfessional(professional).subscribe({
-        next: () => this.router.navigate(['/crud-list']),
-        error: (err) => console.error('Erro ao cadastrar profissional:', err)
-      });
+      if (this.isEditMode) {
+        this.professionalService.updateProfessional({ ...professional, _id: this.professionalId }).subscribe({
+            next: () => this.router.navigate(['/crud-list']),
+            error: (err) => console.error('Erro ao atualizar profissional:', err)
+        });
+      } else {
+        this.professionalService.createProfessional(professional).subscribe({
+          next: () => this.router.navigate(['/crud-list']),
+          error: (err) => console.error('Erro ao cadastrar profissional:', err)
+        });
+      }
     }
   }
 }

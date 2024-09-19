@@ -7,6 +7,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { Professional } from '../../Professional';
 import { ProfessionalService } from '../../services/professional.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-crud-list',
@@ -28,7 +29,9 @@ export class CrudListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Professional>([]);
 
   //construtor para obter os dados dos profissionais
-  constructor(private professionalService: ProfessionalService) {}
+  constructor(private professionalService: ProfessionalService,
+    private router: Router
+  ) {}
 
   //método para carregar os dados dos profissionais cadastrados
   ngOnInit(): void {
@@ -44,6 +47,10 @@ export class CrudListComponent implements OnInit, AfterViewInit {
     this.professionalService.getProfessionals().subscribe(professionals =>  {
       this.dataSource.data = professionals;
     });
+  }
+
+  editProfessional(id: string): void {
+    this.router.navigate(['/edit-professional', id]);
   }
 
   onDelete(professional: Professional): void {

@@ -81,9 +81,10 @@
                     </button>
                 </div>
                 <div> 
-                    <button mat-fab extended color="primary">
+                    <button mat-fab extended color="primary" type="submit">
                         <mat-icon>check</mat-icon>
                         Salvar Cadastro
+                        {{ isEditMode ? 'Atualizar' : 'Criar' }}
                     </button>
                 </div>
         </section>

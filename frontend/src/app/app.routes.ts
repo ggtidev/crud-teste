@@ -8,5 +8,6 @@ export const routes: Routes = [
     { path: 'crud-form', component: CrudFormComponent },
     { path: 'crud-form/:id', component: CrudFormComponent },
     { path: 'professionals/:id', component: ProfDetailsComponent },
+    { path: 'edit-professional/:id', component: CrudFormComponent },
     { path: '', redirectTo: '/crud-list', pathMatch: 'full' }
 ];

@@ -37,7 +37,7 @@
                         <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below" [routerLink]="['/professionals', element?._id]">
                             <mat-icon>visibility</mat-icon>
                         </button>
-                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below">
+                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below" (click)="editProfessional(element?._id)">
                             <mat-icon>edit</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" matTooltip="Excluir" matTooltipPosition="below" (click)="onDelete(element)" >
