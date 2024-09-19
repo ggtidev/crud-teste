@@ -10,7 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray, AbstractControl  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfessionalService } from '../../services/professional.service';
 
@@ -68,14 +68,14 @@ export class CrudFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       specialty: ['', Validators.required],
-      crm: ['', Validators.required],
-      phone: [''],
+      crm: ['', [Validators.required, this.crmValidator]],
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
       email: ['', [Validators.required, Validators.email]],
-      hiringDate: [''],
-      consultationStartTime: [''],
-      consultationEndTime: [''],
+      hiringDate: ['',  [Validators.required, this.dateValidator]],
+      consultationStartTime: ['', this.timeFormatValidator],
+      consultationEndTime: ['', this.timeFormatValidator],
       status: [true],
       daysOfWeek: this.fb.array(this.daysOfWeek.map(() => this.fb.control(false))), 
     });
@@ -89,7 +89,31 @@ export class CrudFormComponent implements OnInit {
             this.form.patchValue(data); // reescreve os dados do profissional
         });
     }
+  }
+
+  //validaçao do crm. de 4 a 6 dígitos + /UF no final
+  crmValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const crmPattern = /^[0-9]{4,6}\/[A-Z]{2}$/; 
+  return crmPattern.test(control.value) ? null : { invalidCRM: true };
 }
+
+  //validação para nao colocar uma data de contratação futura
+  dateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const hiringDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); //sem horas, minutos e segs
+    return hiringDate > today ? { 'futureDate': true } : null;
+  }
+
+  //validaçao dos horários de consulta 
+  timeFormatValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const value = control.value;
+    if (!value) { //aceita vazio já que é opcional
+      return null;
+    }
+    const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
+    return timePattern.test(value) ? null : { invalidTimeFormat: true }; // erro se o formato tiver inválido
+  }
 
   //metodo para transformar em array reconhecido pelo angular
   get daysOfWeekArray() {

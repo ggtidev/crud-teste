@@ -1,11 +1,23 @@
-.main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.conteiner {
+    max-width: 1000px;
+    margin: 20px auto; 
+  }
+  
+  mat-card-header {
+    margin-bottom: 20px; 
+  }
+
+ul {
+    list-style-type: disc; 
+    margin: 0; 
+    padding-left: 20px; 
+    }
+  
+li {
+    margin-bottom: 5px; 
+  }
+
+.back-button {
+    margin-top: 50px;
 }
 
-.main-width {
-    max-width: 1000px;
-    width: 100%;
-}

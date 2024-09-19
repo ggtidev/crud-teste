@@ -3,12 +3,20 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProfessionalService } from '../services/professional.service';
 import { Professional } from '../Professional';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-prof-details',
   standalone: true,
   imports: [
     CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule,
     RouterModule
   ],
   templateUrl: './prof-details.component.html',

@@ -53,9 +53,10 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-.required {
-    color: red;
-}
+.mat-form-field label.mat-form-field-required-marker {
+    color: red; 
+  }
+  
 
 .footer-buttons {
     display: flex;
@@ -74,3 +75,4 @@
     grid-template-columns: repeat(1, 1fr);
    }
 }
+

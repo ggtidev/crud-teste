@@ -7,33 +7,45 @@
                 </section>
                 <div class="grid-um">
                     <mat-form-field appearance="outline" class="span8">
-                        <mat-label>Nome<span class="required">*</span></mat-label>
+                        <mat-label>Nome</mat-label>
                         <input matInput formControlName="name">
+                        <mat-error *ngIf="form.get('name')?.hasError('required')">O nome é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('name')?.hasError('minlength')">O nome deve ter pelo menos 5 caracteres.</mat-error>
+                        <mat-error *ngIf="form.get('name')?.hasError('maxlength')">O nome deve ter no máximo 50 caracteres.</mat-error>
                     </mat-form-field>
                     
                     <mat-form-field appearance="outline" class="span4">
-                        <mat-label>Especialidade<span class="required">*</span></mat-label>
+                        <mat-label>Especialidade</mat-label>
                         <mat-select formControlName="specialty">
                             <mat-option *ngFor="let specialty of specialties" [value]="specialty.especialidade">
                                 {{ specialty.especialidade }}
                             </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="form.get('specialty')?.hasError('required')">A especialidade é obrigatória.</mat-error>
                     </mat-form-field>
         
                     <mat-form-field appearance="outline" class="span4">
-                        <mat-label>CRM<span class="required">*</span></mat-label>
-                        <input matInput formControlName="crm">
+                        <mat-label>CRM</mat-label>
+                        <input matInput placeholder="000000/PE" formControlName="crm">
+                        <mat-error *ngIf="form.get('crm')?.hasError('required')"> O CRM é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('crm')?.hasError('invalidCRM') && form.get('crm')?.dirty && !form.get('crm')?.hasError('required')">
+                        O CRM deve seguir o formato correto.
+                        </mat-error>
                     </mat-form-field>
         
                     <mat-form-field appearance="outline" class="span4">
                         <mat-label>Contato</mat-label>
                         <span matPrefix>+55 &nbsp;</span>
-                        <input type="tel" matInput placeholder="0 0000-0000" formControlName="phone">
+                        <input type="tel" matInput placeholder="00 0 0000-0000" formControlName="phone">
+                        <mat-error *ngIf="form.get('phone')?.hasError('required')">O telefone é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('phone')?.hasError('pattern')">O telefone deve ter 11 dígitos.</mat-error>
                     </mat-form-field>
         
                     <mat-form-field appearance="outline" class="span4">
-                        <mat-label>Email<span class="required">*</span></mat-label>
+                        <mat-label>Email</mat-label>
                         <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+                        <mat-error *ngIf="form.get('email')?.hasError('required')">O e-mail é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('email')?.hasError('email')">O formato do e-mail é inválido.</mat-error>
                     </mat-form-field>
         
                     <mat-form-field appearance="outline" class="span4">
@@ -41,16 +53,22 @@
                         <input matInput [matDatepicker]="picker" formControlName="hiringDate">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="form.get('hiringDate')?.hasError('required')">A data de contratação é obrigatória.</mat-error>
+                        <mat-error *ngIf="form.get('hiringDate')?.hasError('futureDate')">A data de contratação não pode ser no futuro.</mat-error>
                     </mat-form-field>
                     
                     <mat-form-field appearance="outline" class="span4">
                         <mat-label>Início do Atendimento</mat-label>
                         <input matInput placeholder="HH:mm" type="text" formControlName="consultationStartTime">
+                        <mat-error *ngIf="form.get('consultationStartTime')?.hasError('required')">O horário de início é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('consultationStartTime')?.hasError('invalidTimeFormat')">O horário deve estar no formato 24 horas (HH:mm).</mat-error>
                     </mat-form-field>
         
                     <mat-form-field appearance="outline" class="span4">
                         <mat-label>Fim do Atendimento</mat-label>
                         <input matInput placeholder="HH:mm" type="text" formControlName="consultationEndTime">
+                        <mat-error *ngIf="form.get('consultationEndTime')?.hasError('required')">O horário de término é obrigatório.</mat-error>
+                        <mat-error *ngIf="form.get('consultationEndTime')?.hasError('invalidTimeFormat')">O horário deve estar no formato 24 horas (HH:mm).</mat-error>
                     </mat-form-field>
                 </div>
         
