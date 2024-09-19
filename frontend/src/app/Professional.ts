@@ -8,9 +8,7 @@ export interface Professional {
     email: string;
     status: boolean;
     hiringDate?: Date;
-    consultationTimes?: {
-      initial?: string;
-      final?: string;
-    };
+    consultationStartTime?: string,
+    consultationEndTime?: string,
     daysOfWeek?: string[];
   }

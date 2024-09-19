@@ -17,6 +17,10 @@ export class ProfessionalService {
     return this.http.get<Professional[]>(this.apiUrl);
   }
 
+  getProfessionalDetails(id: string): Observable<Professional> {
+    return this.http.get<Professional>(`${this.apiUrl}/${id}`);
+  }
+  
   //void pq nao retorna o objeto dps q é deletado
   deleteProfessional(id: string): Observable<void> {
     //console.log('requisição de exclusão para:', id);

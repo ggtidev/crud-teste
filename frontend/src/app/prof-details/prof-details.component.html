@@ -1,0 +1,19 @@
+<div *ngIf="professional">
+    <h2>Detalhes do Profissional</h2>
+    <p><strong>Nome:</strong> {{ professional.name }}</p>
+    <p><strong>Especialidade:</strong> {{ professional.specialty }}</p>
+    <p><strong>CRM:</strong> {{ professional.crm }}</p>
+    <p><strong>Telefone:</strong> {{ professional.phone }}</p>
+    <p><strong>Email:</strong> {{ professional.email }}</p>
+    <p><strong>Status:</strong> {{ professional.status }}</p>
+    <p><strong>Data de Contratação:</strong> {{ professional.hiringDate | date: 'dd/MM/yyyy' }}</p>
+    
+    <div *ngIf="professional.daysOfWeek && professional.daysOfWeek.length > 0">
+      <p><strong>Dias de Atendimento:</strong></p>
+      <ul>
+        <li *ngFor="let day of professional.daysOfWeek">{{ day }}</li>
+      </ul>
+    </div>
+    
+      <p><strong>Horário de Atendimento:</strong> {{ professional.consultationStartTime }} - {{ professional.consultationEndTime }}</p>
+</div>

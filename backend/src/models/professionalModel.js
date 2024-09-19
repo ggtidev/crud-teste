@@ -8,10 +8,8 @@ const professionalSchema = new mongoose.Schema({
     email: { type: String, required: true},
     status: { type: Boolean },
     hiringDate: { type: Date},
-    consultationTimes: {
-        initial: { type: String },
-        final: { type: String }
-    },
+    consultationStartTime: { type: String },
+    consultationEndTime: { type: String },
     daysOfWeek: [{ type: String }],
 });
 
