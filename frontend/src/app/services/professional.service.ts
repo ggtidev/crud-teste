@@ -10,7 +10,7 @@ export class ProfessionalService {
   //conectar à lista de profissionais cadastrados
   private apiUrl = 'http://localhost:3000/api/profissionais';
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient ) { } //permite realizar requisições http para o back end de forma simples
 
   //observable funciona como funçao async
   getProfessionals() : Observable<Professional[]>{

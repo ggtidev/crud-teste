@@ -42,30 +42,31 @@ exports.createProfessional = async (req, res) => {
     }
 }
 
-//Atualização de profissionais
+//atualização de profissionais
 exports.updateProfessional = async (req, res) => {
     const { crm } = req.body;
 
     try {
-        // Verifica se já existe um profissional com o mesmo CRM
-        const professionalExist = await Professional.findOne({ crm });
+        // verifica se já existe um profissional com o mesmo CRM e id diferente
+        //dessa forma, é possível fazer a alteração de tudo do profissional sem modificar o crm
+        const professionalExist = await Professional.findOne({ crm, _id: { $ne: req.params.id } });
         if (professionalExist) {
             return res.status(400).json({ message: 'CRM já cadastrado.' });
         }
 
-        // Atualiza o profissional
+        // atualiza o profissional
         const upProfessional = await Professional.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (upProfessional === null) {
             return res.status(404).json({ message: "Profissional não encontrado." });
         }
 
-        res.json({ message: "Perfil do profissional atualizado com sucesso!", upProfessional });
+        res.json({ message: "Perfil do profissional atualizado com sucesso!" });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 }
 
-//Deletar profissional
+//deletar profissional
 exports.deleteProfessional = async (req, res) => {
     const id = req.params.id;
 

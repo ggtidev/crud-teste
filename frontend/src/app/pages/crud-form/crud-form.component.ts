@@ -82,7 +82,7 @@ export class CrudFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.professionalId = this.route.snapshot.paramMap.get('id')  || undefined;
+    this.professionalId = this.route.snapshot.paramMap.get('id')  || undefined; //instancia do angular router que permite acesar os parametros e informaçoes da rota ativa
     if (this.professionalId) {
         this.isEditMode = true;
         this.professionalService.getProfessionalDetails(this.professionalId).subscribe(data => {
@@ -123,19 +123,20 @@ export class CrudFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const professional: Professional = {
-        ...this.form.value,
-        daysOfWeek: this.daysOfWeekArray.controls
+        ...this.form.value, //cria um novo profissional
+        daysOfWeek: this.daysOfWeekArray.controls // iteração entre os checkboxes marcados para incluí-los no objeto profissional
           .map((control: any, i: number) => (control.value ? this.daysOfWeek[i].name : null))
           .filter((v: string | null) => v !== null)
       };
       
-      if (this.isEditMode) {
+      //logica para ir à pagina de ediçao ou criação de perfil do profissional (depende do botao que foi clicado)
+      if (this.isEditMode) { 
         this.professionalService.updateProfessional({ ...professional, _id: this.professionalId }).subscribe({
             next: () => this.router.navigate(['/crud-list']),
             error: (err) => console.error('Erro ao atualizar profissional:', err)
         });
       } else {
-        this.professionalService.createProfessional(professional).subscribe({
+        this.professionalService.createProfessional(professional).subscribe({ 
           next: () => this.router.navigate(['/crud-list']),
           error: (err) => console.error('Erro ao cadastrar profissional:', err)
         });

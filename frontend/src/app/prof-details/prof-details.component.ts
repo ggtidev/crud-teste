@@ -32,9 +32,9 @@ export class ProfDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); //instancia do angular router que permite acesar os parametros e informaçoes da rota ativa
     if (id) {
-      this.professionalService.getProfessionalDetails(id).subscribe(
+      this.professionalService.getProfessionalDetails(id).subscribe( //verifica se o id é valido e mostra os detalhes do profissional de id especificado
         (data) => (this.professional = data),
         (error) => console.error(error)
       );

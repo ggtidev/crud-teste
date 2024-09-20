@@ -33,6 +33,7 @@ export class CrudListComponent implements OnInit, AfterViewInit {
     private router: Router
   ) {}
 
+  //o OnInit inicializa e configura dados que serão utilizados
   //método para carregar os dados dos profissionais cadastrados
   ngOnInit(): void {
     this.loadProfessionals();
@@ -49,6 +50,7 @@ export class CrudListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  //roteia para a página de ediçao/atualizaxçao do profissional
   editProfessional(id: string): void {
     this.router.navigate(['/edit-professional', id]);
   }
