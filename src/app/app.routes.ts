@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { CrudListComponent } from './pages/crud-list/crud-list.component';
-import { CrudFormComponent } from './pages/crud-form/crud-form.component';
+import { CrudListComponent } from './pages/crud-list/crud-list.component.ts';
+import { CrudFormComponent } from './pages/crud-form/crud-form.component.ts';
 
 export const routes: Routes = [
     { path: 'crud-list', component: CrudListComponent },

@@ -7,58 +7,58 @@
             <div class="grid-um">
                 <mat-form-field appearance="outline" class="span8">
                     <mat-label>Nome<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="professional.nome">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Especialidade<span class="required">*</span></mat-label>
-                    <mat-select>
-                        @for (specialty of specialties; track specialty.especialidade) {
-                            <mat-option >
+                    <mat-select [(ngModel)]="professional.especialidade">
+                        
+                            <mat-option *ngFor="let specialty of specialties" [value]="specialty.especialidade">
                                 {{ specialty.especialidade }} 
                             </mat-option>
-                        }
+                        
                     </mat-select>
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>CRM<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="professional.crm">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Contato</mat-label>
                     <span matPrefix>+55 &nbsp;</span>
-                    <input type="tel" matInput placeholder="0 0000-0000">
+                    <input type="tel" [(ngModel)]="professional.telefone" matInput placeholder="0 0000-0000">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Email<span class="required">*</span></mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
+                    <input type="email" matInput [(ngModel)]="professional.email" placeholder="Ex. pat@example.com">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Data da Contratação</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="professional.data_contratacao">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Início do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput [(ngModel)]="professional.hora_inicio_atendimento" placeholder="HH:mm" type="text">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Fim do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput  [(ngModel)]="professional.hora_fim_atendimento" placeholder="HH:mm" type="text">
                 </mat-form-field>
             </div>
     
             <div>
                 <label for="status">Status</label>
                 <div>
-                    <mat-radio-group aria-label="Selecione uma opção">
+                    <mat-radio-group [(ngModel)]="professional.status" aria-label="Selecione uma opção">
                         <mat-radio-button value="true">Ativo(a)</mat-radio-button>
                         <mat-radio-button value="false">Inativo(a)</mat-radio-button>
                     </mat-radio-group> 
@@ -68,11 +68,11 @@
             <div class="div-column-gap">
                 <label for="daysOfWeek">Dias de Atendimento</label>
                 <div class="days-checkbox-group">
-                        @for (day of daysOfWeek; track day.name) {
-                            <mat-checkbox>
+                     
+                            <mat-checkbox *ngFor="let day of daysOfWeek" [(ngModel)]="day.selected">
                                 {{ day.name }}
                             </mat-checkbox>
-                        } 
+                        
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
                 </button>
             </div>
             <div> 
-                <button mat-fab extended color="primary">
+                <button mat-fab extended color="primary" (click)="saveProfessional()">
                     <mat-icon>check</mat-icon>
                     Salvar Cadastro
                 </button>
