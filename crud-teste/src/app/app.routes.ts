@@ -5,6 +5,6 @@ import { CrudFormComponent } from './pages/crud-form/crud-form.component';
 export const routes: Routes = [
     { path: 'crud-list', component: CrudListComponent },
     { path: 'crud-form', component: CrudFormComponent },
-    { path: 'crud-form/:id', component: CrudFormComponent },
+    { path: 'crud-form/:crm', component: CrudFormComponent },
     { path: '', redirectTo: '/crud-list', pathMatch: 'full' }
 ];
