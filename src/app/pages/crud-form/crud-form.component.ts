@@ -9,6 +9,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { DoctorService } from '../../services/doctor-service';
 
 @Component({
   selector: 'app-crud-form',
@@ -21,7 +23,7 @@ import { RouterLink } from '@angular/router';
     MatNativeDateModule, 
     MatSelectModule, 
     MatRadioModule, 
-    MatCheckboxModule, 
+    MatCheckboxModule,
     MatIconModule, 
     MatButtonModule
   ],
