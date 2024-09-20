@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  app:
+    image: php:8.1-fpm
+    container_name: php-app
+    volumes:
+      - ./backend/api:/var/www/html
+    networks:
+      - backend
+    depends_on:
+      - db
+
+  webserver-backend:
+    image: nginx:alpine
+    container_name: nginx-backend
+    volumes:
+      - ./backend/api:/var/www/html
+      - ./nginx-backend.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:7001"
+    networks:
+      - backend
+    depends_on:
+      - app
+
+  webserver-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nginx-frontend
+    ports:
+      - "80:80"
+    networks:
+      - backend
+
+  db:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: professional_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+volumes:
+  db-data:
+
+networks:
+  backend:
