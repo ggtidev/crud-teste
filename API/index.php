@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/config.php';
 
-// Verificar se a requisição é GET ou POST
+  // aqui estou verificando se a requisição é GET ou POST
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
@@ -37,7 +37,6 @@ function get() {
     
     $pdo = createConection();
 
-    // GET /Cadastro_Profissionais
     $stmt = $pdo->prepare('SELECT * FROM Cadastro_Profissionais');
     $stmt->execute();
 
@@ -47,8 +46,6 @@ function get() {
 }
 
 function post() {
-
-    // POST /Cadastro_Profissionais
 
     $pdo = createConection();
     $data = json_decode(file_get_contents('php://input'), true);
@@ -73,7 +70,6 @@ function post() {
 }
 
 function put() {
-    // PUT /Cadastro_Profissionais/{id}
     $pdo = createConection();
     $data = json_decode(file_get_contents('php://input'), true);
 
@@ -96,8 +92,6 @@ function put() {
 }
 
 function delete() {
-
-    // DELETE /Cadastro_Profissionais/{id}
 
     $pdo = createConection();
     $crm = $_GET['crm'];
