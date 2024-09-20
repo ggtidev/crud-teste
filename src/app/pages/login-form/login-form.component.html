@@ -1,0 +1,39 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Email" name="email" [(ngModel)]="loginData.email" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput type="password" placeholder="Senha" name="password" [(ngModel)]="loginData.password" required>
+      </mat-form-field>
+  
+      <mat-checkbox name="rememberMe" [(ngModel)]="loginData.rememberMe">Lembrar-me</mat-checkbox>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+      
+      <div class="forgot-password">
+        <a href="#">Esqueceu a senha?</a>
+      </div>
+  
+      <div class="create-account">
+        <button mat-raised-button color="accent">Criar uma conta</button>
+      </div>
+  
+      <div class="login-with">
+        <p>ou</p>
+  
+        <button mat-stroked-button class="social-login google-login">
+          <mat-icon>account_circle</mat-icon>
+          Entrar com Google
+        </button>
+  
+        <button mat-stroked-button class="social-login microsoft-login">
+          <mat-icon>account_circle</mat-icon>
+          Entrar com Microsoft
+        </button>
+      </div>
+    </form>
+  </div>
+  
