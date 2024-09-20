@@ -8,27 +8,27 @@
                 <table mat-table [dataSource]="dataSource" >
                     <ng-container matColumnDef="name">
                       <th mat-header-cell *matHeaderCellDef> Nome </th>
-                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.Nome}} </td>
                     </ng-container>
                   
                     <ng-container matColumnDef="specialty">
                       <th mat-header-cell *matHeaderCellDef> Especialidade </th>
-                      <td mat-cell *matCellDef="let element"> {{element.specialty}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.Especialidade}} </td>
                     </ng-container>
                   
                     <ng-container matColumnDef="crm">
                       <th mat-header-cell *matHeaderCellDef> CRM </th>
-                      <td mat-cell *matCellDef="let element"> {{element.crm}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.CRM}} </td>
                     </ng-container>
                   
                     <ng-container matColumnDef="phone">
                       <th mat-header-cell *matHeaderCellDef> Contato </th>
-                      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.Contato}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="status">
                         <th mat-header-cell *matHeaderCellDef> Status </th>
-                        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.Status_Cadastro}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="actions">
@@ -37,10 +37,10 @@
                         <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below">
                             <mat-icon>visibility</mat-icon>
                         </button>
-                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below">
+                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below" (click)="editProfissional(element)">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" matTooltip="Excluir" matTooltipPosition="below">
+                        <button mat-icon-button color="warn" matTooltip="Excluir" (click)="apagarProfissional(element)" matTooltipPosition="below">
                             <mat-icon>delete</mat-icon>
                         </button>
                         </td>

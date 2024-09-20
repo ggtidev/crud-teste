@@ -1,28 +1,64 @@
-# Processo Seletivo
 
-## Descrição
-Bem-vindo ao repositório do projeto CRUD de profissionais de saúde. Este projeto tem como objetivo proporcionar uma experiência prática na construção de um sistema básico de CRUD utilizando Angular e Angular Material. A ideia é que você possa integrar este CRUD com uma API que você mesmo criará, utilizando serviços e requisições HTTP. Além disso, o projeto fornecerá uma oportunidade para demonstrar suas habilidades em validações de formulários.
+# Processo Seletivo 
 
-## Como Executar o Projeto
-Clone este repositório em seu ambiente local.
-Instale as dependências utilizando o comando npm install. Execute o projeto com ng serve. Acesse a aplicação através do navegador no endereço http://localhost:4200.
 
-## Funcionalidade principal
+## Instalando o Ambiente do Banco de Dados
 
-### C.R.U.D. de Profissionais de Saúde
-A aplicação deve permitir a execução de operações CRUD (Criar, Ler, Atualizar, Excluir) em registros de clínicas.
+1. Instale o Docker: https://www.docker.com, após isso, rode o arquivo do conteiner Docker na pasta Database com o comando: 
 
-## O que esperamos
+```bash
+  # cd Database
+  # docker-compose up -d
+```
 
-- Integração do projeto com Backend (efetuar processamentos que reflitam em um banco de dados a sua escolha);
-- Possibilidade de editar / excluir / criar e listar profissionais;
-- Integração com um banco de dados a sua escolha;
+2. Instale o DBeaver: https://dbeaver.io/download/, e crie uma conexão com o MySql do Docker no caminho: localhost:3306, junto com o login e a senha que você criou no Docker Compose, 
 
-## Conclusão
-Procuramos alguém acima de tudo, capaz de solucionar problemas da forma mais criativa possível. Trazendo muita dinamicidade para o desenvolvimento.
+3. Após instabelecida a conxão crie o banco de dados **hospital**.
 
-Então, aproveite cada linha de código, celebre suas conquistas e não hesite em experimentar algo novo para deixar o processo ainda mais interessante.
+4. Rode o script que esta no arquivo **database.sql** no DBeaver.
 
-E, claro, se divirta muito! Afinal, o aprendizado é uma jornada empolgante e, quem sabe, até mesmo um pouco divertida.
+## Instalando o Ambiente do PHP
 
-Te aguardamos na próxima etapa, Boa sorte 🚀😊
+5. Instale o Xamp: https://www.apachefriends.org/pt_br/index.html inicie o apache.
+
+6. Mova os arquivos que esta na pasta API para a pasta htdocs, normalmente no windowns fica nessa pasta:
+
+```bash
+  C:\xampp\htdocs
+```
+
+## Rodando o Front end
+7. Instale o nvm windowns https://github.com/coreybutler/nvm-windows/releases 
+
+8. Instale o node na versão do projeto 
+```bash
+  # nvm install 20.17.0 
+  # nvm use 20.17.0 
+```
+
+9. Instale o Angular CLI 
+```bash
+  # npm install -g @angular/cli@17 
+```
+
+10. Apos instalar o angular, rode os comando na pasta **crud-teste**
+```bash
+  # npm i 
+  # ng serve
+```
+    
+## Stack utilizada
+
+**Front-end:** Angular
+
+**Back-end:** PHP, Xamp
+
+**Back-end:** Docker, MySql
+
+## Ferramentas Utilizadas:
+
+**Front-end:** VsCode
+
+**Back-end:** Postman
+
+**Back-end:** DBeaver

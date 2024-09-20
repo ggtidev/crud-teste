@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: "hospital"
+      MYSQL_USER: "gerente"
+      MYSQL_PASSWORD: "123456"
+    ports:
+      - "3306:3306"
