@@ -8,9 +8,13 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
 import { DoctorService } from '../../services/doctor-service';
+import { DoctorModel } from '../../models/DoctorModel';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-crud-form',
@@ -25,10 +29,14 @@ import { DoctorService } from '../../services/doctor-service';
     MatRadioModule, 
     MatCheckboxModule,
     MatIconModule, 
-    MatButtonModule
+    MatButtonModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
   templateUrl: './crud-form.component.html',
-  styleUrl: './crud-form.component.scss'
+  styleUrl: './crud-form.component.scss',
+  providers:[DoctorService]
 })
 export class CrudFormComponent {
    daysOfWeek = [
@@ -51,4 +59,33 @@ export class CrudFormComponent {
     { especialidade: 'Genética Pediátrica' },
     { especialidade: 'Alergologia Pediátrica' },
   ];
+
+  constructor(
+    private doctorService: DoctorService,
+    private router: Router
+  ){}
+
+  doctor: DoctorModel = {
+    id: 0,
+    name: '',
+    email: '',
+    crm: '',
+    speciality:'',
+    status: '',
+    contact: '',
+    createAt: new Date(),
+    updatedAt: new Date()
+  }
+
+  createDoctor() {
+    this.doctorService.createDoctor(this.doctor).subscribe(
+      (response) => {
+        console.log('Médico adcionado com sucesso', response);
+        this.router.navigate(['/crud-list'])
+      },
+      (error) => {
+        console.log('Não foi possível adcionar o Médico solicitado', error)
+      }
+    )
+  }
 }

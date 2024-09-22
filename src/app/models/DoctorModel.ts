@@ -4,8 +4,8 @@ export interface DoctorModel {
   name: string;
   email: string;
   crm: string;
-  specialty:string;
-  status: boolean;
+  speciality: string;
+  status: string;
   contact: string;
   createAt: Date;
   updatedAt: Date;

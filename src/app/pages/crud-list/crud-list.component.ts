@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DoctorService } from '../../services/doctor-service';
 import { DoctorModel } from '../../models/DoctorModel';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,11 +28,12 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class CrudListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['name', 'specialty', 'crm', 'contact', 'status', 'actions'];
+  displayedColumns: string[] = ['name', 'speciality', 'crm', 'contact', 'status', 'actions'];
   dataSource = new MatTableDataSource<DoctorModel>([]);
 
   constructor(
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private router: Router
   ){}
 
   ngAfterViewInit() {
@@ -52,5 +53,9 @@ export class CrudListComponent implements AfterViewInit {
         this.getAllDoctors();
       }
     });
+  }
+
+  editProfessional(id: number) {
+    this.router.navigate(['/crud-form', id]);
   }
 }
