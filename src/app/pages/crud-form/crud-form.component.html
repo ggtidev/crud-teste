@@ -7,14 +7,14 @@
             <div class="grid-um">
                 <mat-form-field appearance="outline" class="span8">
                     <mat-label>Nome<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="doctor.name">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Especialidade<span class="required">*</span></mat-label>
-                    <mat-select>
-                        @for (specialty of specialties; track specialty.especialidade) {
-                            <mat-option >
+                    <mat-select [(ngModel)]="doctor.speciality">
+                        @for (specialty of specialties; track doctor.speciality) {
+                            <mat-option [value]="specialty.especialidade">
                                 {{ specialty.especialidade }} 
                             </mat-option>
                         }
@@ -23,44 +23,44 @@
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>CRM<span class="required">*</span></mat-label>
-                    <input matInput>
+                    <input matInput placeholder="000000/UF" [(ngModel)]="doctor.crm">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Contato</mat-label>
                     <span matPrefix>+55 &nbsp;</span>
-                    <input type="tel" matInput placeholder="0 0000-0000">
+                    <input type="tel" matInput placeholder="00 0000-0000" [(ngModel)]="doctor.contact">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Email<span class="required">*</span></mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
+                    <input type="email" matInput placeholder="Ex. pat@example.com" [(ngModel)]="doctor.email">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Data da Contratação</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="doctor.createAt">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Início do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput placeholder="HH:mm" type="text" [(ngModel)]="doctor.startService">
                 </mat-form-field>
     
                 <mat-form-field appearance="outline" class="span4">
                     <mat-label>Fim do Atendimento</mat-label>
-                    <input matInput placeholder="HH:mm" type="text">
+                    <input matInput placeholder="HH:mm" type="text" [(ngModel)]="doctor.endService">
                 </mat-form-field>
             </div>
     
             <div>
                 <label for="status">Status</label>
                 <div>
-                    <mat-radio-group aria-label="Selecione uma opção">
-                        <mat-radio-button value="true">Ativo(a)</mat-radio-button>
-                        <mat-radio-button value="false">Inativo(a)</mat-radio-button>
+                    <mat-radio-group [(ngModel)]="doctor.status" aria-label="Selecione uma opção">
+                        <mat-radio-button value="ACTIVE">Ativo(a)</mat-radio-button>
+                        <mat-radio-button value="INACTIVE">Inativo(a)</mat-radio-button>
                     </mat-radio-group> 
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <label for="daysOfWeek">Dias de Atendimento</label>
                 <div class="days-checkbox-group">
                         @for (day of daysOfWeek; track day.name) {
-                            <mat-checkbox>
+                            <mat-checkbox (click)="setDaysOfWeek($event, day.name)">
                                 {{ day.name }}
                             </mat-checkbox>
                         } 
@@ -84,7 +84,7 @@
                 </button>
             </div>
             <div> 
-                <button mat-fab extended color="primary">
+                <button *ngIf="!isEditUrl" mat-fab extended color="primary" (click)="createOrUpdateDoctor()">
                     <mat-icon>check</mat-icon>
                     Salvar Cadastro
                 </button>

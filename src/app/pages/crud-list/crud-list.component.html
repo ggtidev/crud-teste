@@ -11,9 +11,9 @@
                       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                     </ng-container>
                   
-                    <ng-container matColumnDef="specialty">
+                    <ng-container matColumnDef="speciality">
                       <th mat-header-cell *matHeaderCellDef> Especialidade </th>
-                      <td mat-cell *matCellDef="let element"> {{element.specialty}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
                     </ng-container>
                   
                     <ng-container matColumnDef="crm">
@@ -21,9 +21,9 @@
                       <td mat-cell *matCellDef="let element"> {{element.crm}} </td>
                     </ng-container>
                   
-                    <ng-container matColumnDef="phone">
+                    <ng-container matColumnDef="contact">
                       <th mat-header-cell *matHeaderCellDef> Contato </th>
-                      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                      <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
                     </ng-container>
                 
                     <ng-container matColumnDef="status">
@@ -34,13 +34,13 @@
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let element">
-                        <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below">
+                        <button mat-icon-button color="secondary" matTooltip="Ver" matTooltipPosition="below" [routerLink]="['/crud-form/view', element.id]">
                             <mat-icon>visibility</mat-icon>
                         </button>
-                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below">
+                        <button mat-icon-button color="secondary" matTooltip="Editar" matTooltipPosition="below" [routerLink]="['/crud-form/edit', element.id]">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" matTooltip="Excluir" matTooltipPosition="below">
+                        <button mat-icon-button color="warn" matTooltip="Excluir" matTooltipPosition="below" (click)="deleteDoctorById(element.id)">
                             <mat-icon>delete</mat-icon>
                         </button>
                         </td>
