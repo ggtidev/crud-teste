@@ -1,0 +1,19 @@
+services:
+  crud-test-db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db_manager'
+      MYSQL_ROOT_PASSWORD: 'root'
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    container_name: db-crud-test-api
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=$$MYSQL_ROOT_PASSWORD --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 10s
+      retries: 10
