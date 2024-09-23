@@ -9,4 +9,7 @@ export interface DoctorModel {
   contact: string;
   createAt: Date;
   updatedAt: Date;
+  startService: string;
+  endService: string;
+  daysOfWeek: string[];
 }

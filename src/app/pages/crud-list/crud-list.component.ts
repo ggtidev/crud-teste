@@ -48,11 +48,12 @@ export class CrudListComponent implements AfterViewInit {
   }
 
   deleteDoctorById(id: number) {
-    this.doctorService.deleteDoctor(id).subscribe((data: any) => {
-      if (data.success) {
-        this.getAllDoctors();
+    this.doctorService.deleteDoctor(id).subscribe(
+      (response) => {
+        console.log('Médico deletado com sucesso', response);
+        this.router.navigate(['/crud-list'])
       }
-    });
+    )
   }
 
   editProfessional(id: number) {

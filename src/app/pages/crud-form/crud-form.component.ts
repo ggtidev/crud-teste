@@ -44,13 +44,13 @@ export class CrudFormComponent  implements OnInit{
   isEditUrl = true;
 
   daysOfWeek = [
-    { name: 'Segunda-feira' },
-    { name: 'Terça-feira' },
-    { name: 'Quarta-feira' },
-    { name: 'Quinta-feira' },
-    { name: 'Sexta-feira' },
-    { name: 'Sábado' },
-    { name: 'Domingo' },
+    { name: 'Segunda-feira '},
+    { name: 'Terça-feira '},
+    { name: 'Quarta-feira '},
+    { name: 'Quinta-feira '},
+    { name: 'Sexta-feira '},
+    { name: 'Sábado '},
+    { name: 'Domingo '},
   ];
 
   specialties = [
@@ -79,7 +79,10 @@ export class CrudFormComponent  implements OnInit{
     status: '',
     contact: '',
     createAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
+    startService: '',
+    endService: '',
+    daysOfWeek: []
   }
 
   createDoctor() {
@@ -106,6 +109,7 @@ export class CrudFormComponent  implements OnInit{
       this.getDoctorById(this.idUsuario)
     }
     this.isEditUrl = window.location.pathname.includes('view');
+    console.log(this.doctor.daysOfWeek)
   }
 
   updateDoctor(){
@@ -122,6 +126,23 @@ export class CrudFormComponent  implements OnInit{
       this.updateDoctor()
     }else{
       this.createDoctor()
+    }
+  }
+
+  setDaysOfWeek($event:any, day:string){
+    console.log(this.doctor.daysOfWeek);
+    if ($event.target.checked) {
+      this.doctor.daysOfWeek.push(day);
+    } else {
+      this.removeDay(this.doctor.daysOfWeek, day);
+    }
+  }
+
+  removeDay(daysList: string[], day: string): void{
+    for (let i = daysList.length - 1; i >= 0; i--) {
+      if (daysList[i] === day) {
+        daysList.splice(i, 1);
+      }
     }
   }
 }
