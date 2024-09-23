@@ -88,11 +88,9 @@ export class CrudFormComponent  implements OnInit{
   createDoctor() {
     this.doctorService.createDoctor(this.doctor).subscribe(
       (response) => {
-        console.log('Médico adcionado com sucesso', response);
         this.router.navigate(['/crud-list'])
       },
       (error) => {
-        console.log('Não foi possível adcionar o Médico solicitado', error)
       }
     )
   }
@@ -109,13 +107,11 @@ export class CrudFormComponent  implements OnInit{
       this.getDoctorById(this.idUsuario)
     }
     this.isEditUrl = window.location.pathname.includes('view');
-    console.log(this.doctor.daysOfWeek)
   }
 
   updateDoctor(){
     this.doctorService.updateDoctor(this.doctor).subscribe(
       (response) => {
-        console.log('Médico atualizado com sucesso', response);
         this.router.navigate(['/crud-list'])
       }
     )
@@ -130,7 +126,6 @@ export class CrudFormComponent  implements OnInit{
   }
 
   setDaysOfWeek($event:any, day:string){
-    console.log(this.doctor.daysOfWeek);
     if ($event.target.checked) {
       this.doctor.daysOfWeek.push(day);
     } else {

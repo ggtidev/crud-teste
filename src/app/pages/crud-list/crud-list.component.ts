@@ -50,7 +50,6 @@ export class CrudListComponent implements AfterViewInit {
   deleteDoctorById(id: number) {
     this.doctorService.deleteDoctor(id).subscribe(
       (response) => {
-        console.log('Médico deletado com sucesso', response);
         this.router.navigate(['/crud-list'])
       }
     )
