@@ -41,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class CrudFormComponent  implements OnInit{
 
   idUsuario!: number;
+  isEditUrl = true;
 
   daysOfWeek = [
     { name: 'Segunda-feira' },
@@ -100,9 +101,11 @@ export class CrudFormComponent  implements OnInit{
   }
 
   ngOnInit(){
-
-    this.idUsuario = this.route.snapshot.params['id']
-    this.getDoctorById(this.idUsuario)
+    if(window.location.pathname.includes('view') || window.location.pathname.includes('edit')){
+      this.idUsuario = this.route.snapshot.params['id']
+      this.getDoctorById(this.idUsuario)
+    }
+    this.isEditUrl = window.location.pathname.includes('view');
   }
 
   updateDoctor(){

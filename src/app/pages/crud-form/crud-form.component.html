@@ -84,7 +84,7 @@
                 </button>
             </div>
             <div> 
-                <button mat-fab extended color="primary" (click)="createOrUpdateDoctor()">
+                <button *ngIf="!isEditUrl" mat-fab extended color="primary" (click)="createOrUpdateDoctor()">
                     <mat-icon>check</mat-icon>
                     Salvar Cadastro
                 </button>
